@@ -1,0 +1,93 @@
+#tasks {
+    background: #fafafa;
+    color: #333;
+    border-radius: 20px;
+}
+
+#tasks, .card {
+    -webkit-box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    -moz-box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+#tasks .cell-align-center {
+    vertical-align: middle;
+    text-align: center;
+}
+
+#tasks td {
+    border-top: 1px solid #afafaf;
+}
+
+.card.list {
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+    opacity: 0.9;
+}
+
+.card.list:hover {
+    opacity: 1;
+}
+
+.card.list .card-header {
+    color: white;
+    font-weight: 700;
+}
+
+.filter-controls .btn {
+    opacity: 0.5;
+}
+
+.filter-controls .btn:hover {
+    opacity: 1;
+}
+
+body {
+    height: 100%;
+    background-color: #fafafa;
+    background-image: url("/img/bg.png");
+}
+
+
+.fa.fa-spin-fast {
+    -webkit-animation: fa-spin 1s infinite linear;
+    animation: fa-spin 1s infinite linear;
+}
+.clickable {
+    cursor: pointer;
+}
+
+.fade-wrapper {
+    position:absolute;
+    width: 100%;
+    height: 100px;
+    background: -moz-linear-gradient(bottom, rgba(250, 250, 250, 0) 0%, rgba(250, 250, 250, 1));
+    background: -webkit-gradient(linear, left bottom, left top, color-stop(0%,rgba(250, 250, 250, 0)), color-stop(100%,rgba(250, 250, 250, 1)));
+    background: -webkit-linear-gradient(bottom, rgba(250, 250, 250, 0) 0%, rgba(250, 250, 250, 1) 100%);
+    background: -o-linear-gradient(bottom, rgba(250, 250, 250, 0) 0%, rgba(250, 250, 250, 1) 100%);
+    background: -ms-linear-gradient(bottom, rgba(250, 250, 250, 0) 0%, rgba(250, 250, 250, 1) 100%);
+    background: linear-gradient(to top, rgba(250, 250, 250, 0) 0%, rgba(250, 250, 250, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00fafafa', endColorstr='#fafafa',GradientType=0 );
+}
+
+.splash-page .navbar-brand {
+    display: none;
+}
+.splash-page .card {
+    max-width:540px;
+}
+.splash-page img {
+    border: solid 1px #ccc;
+    min-width:240px;
+}
+
+.introjs-tooltip {
+    color: #333;
+}
+
+@media (min-width: 768px) {
+    .tasks-toolbar {
+        justify-content: flex-start!important;
+    }
+}

@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col-md-6 mb-2 p-0">
+        <div class="btn-toolbar tasks-toolbar justify-content-center">
+            <div class="btn-group mr-2">
+                <button id="delete-list-button" type="button" class="btn btn-danger clickable"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></button>
+            </div>
+            <div class="btn-group mr-2">
+                <button id="refresh-tasks-button" type="button" class="btn btn-dark clickable"><i class="fa fa-refresh fa-lg" aria-hidden="true"></i></button>
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon clickable" id="search-tasks-button"><i class="fa fa-search" aria-hidden="true"></i></span>
+                <input type="text" class="form-control" id="search-tasks-input" placeholder="Search">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-2 text-center text-md-right p-0">
+        <div class="btn-group filter-controls">
+            <span class="d-none d-md-block" style="padding: .375rem .75rem;">Filter:</span>
+		    <button type="button" class="btn btn-light clickable ml-2 all">All</button>
+			<button type="button" class="btn btn-primary clickable inprogress">In Progress</button>
+			<button type="button" class="btn btn-danger clickable">Urgent</button>
+			<button type="button" class="btn btn-success clickable done">Done</button>
+		</div>
+    </div>
+</div>

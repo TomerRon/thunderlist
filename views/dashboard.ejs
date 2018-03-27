@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <% include ./partials/head %>
+    </head>
+    <body class="tasks-page"<%= locals.startTutorial ? ' data-tutorial=true' : '' %>>
+        <% include ./partials/header %>
+        <div class="fade-wrapper"></div>
+        <div class="container pt-2 pb-5">
+            <div>
+                <div class="row" id="lists">
+                    <div class="col-sm-6">
+                        <a class="card border-light mb-4 list">
+                            <div class="card-header bg-light" style="padding: 9px 20px;">
+                                <input id="new-list-name" placeholder="New list" class="form-control form-control-sm w-50 mx-auto"/>
+                            </div>
+                            <div class="card-body" style="padding:12px;">
+                                <button class="new-list-button btn btn-lg btn-dark clickable"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $(document).ready(function(){
+                getLists();
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="/">
+            <i class="fa fa-bolt"></i>
+            Thunderlist
+        </a>
+        <ul class="navbar-nav ml-auto">
+            <% if (user) { %>
+            <li class="nav-item">
+                <a href="/dashboard" class="nav-link btn"><span class="fa fa-list-alt"></span> Lists</a>
+            </li>
+            <li class="nav-item">
+                <a href="/" class="nav-link btn disabled"><span class="fa fa-user-circle"></span> Profile</a>
+            </li>
+            <li class="nav-item">
+                <a href="/logout" class="nav-link"><span class="fa fa-sign-out"></span> Log Out</a>
+            </li>
+            <% } else { %>
+            <li class="nav-item">
+                <a href="/login" class="nav-link"><span class="fa fa-sign-in"></span> Log In</a>
+            </li>
+            <li class="nav-item">
+                <a href="/signup" class="nav-link"><span class="fa fa-user-plus"></span> Sign Up</a>
+            </li>
+            <% } %>
+        </ul>
+    </div>
+</nav>
