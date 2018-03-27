@@ -1,7 +1,8 @@
 const   express = require('express'),
         router = express.Router(),
         models  = require('./models/index'),
-        Op = models.Sequelize.Op;
+        Op = models.Sequelize.Op,
+        uuidregex = /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/;
 
 ///////////////////////////////////////////////////
 //               List API
@@ -16,7 +17,7 @@ router.get('/lists', isLoggedIn, (req, res) => {
 });
 
 // GET List
-router.get('/list/:listId', isLoggedIn, (req, res) => {
+router.get('/list/:listId', isLoggedIn, isValidListId, (req, res) => {
     models.List.findById(req.params.listId)
     .then(list => {
         if (list == null || req.user.id != list.userId) {
@@ -40,7 +41,7 @@ router.post('/lists', isLoggedIn, (req, res) => {
 });
 
 // DELETE List
-router.delete('/lists', isLoggedIn, (req, res) => {
+router.delete('/lists', isLoggedIn, isValidListId, (req, res) => {
     models.List.findById(req.body.listId)
     .then(list => {
         if (list == null || req.user.id != list.userId) {
@@ -58,7 +59,7 @@ router.delete('/lists', isLoggedIn, (req, res) => {
 ///////////////////////////////////////////////////
 
 // GET Tasks by List ID
-router.get('/lists/:listId', isLoggedIn, (req, res) => {
+router.get('/lists/:listId', isLoggedIn, isValidListId, (req, res) => {
     models.List.findById(req.params.listId)
     .then(list => {
         if (list == null || req.user.id != list.userId) {
@@ -72,7 +73,7 @@ router.get('/lists/:listId', isLoggedIn, (req, res) => {
 });
 
 // GET Task
-router.get('/lists/:listId/task/:taskId', isLoggedIn, (req, res) => {
+router.get('/lists/:listId/task/:taskId', isLoggedIn, isValidListId, (req, res) => {
     models.List.findById(req.params.listId)
     .then(list => {
         if (list == null || req.user.id != list.userId) {
@@ -86,7 +87,7 @@ router.get('/lists/:listId/task/:taskId', isLoggedIn, (req, res) => {
 });
 
 // POST new Task
-router.post('/lists/:listId', isLoggedIn, (req, res) => {
+router.post('/lists/:listId', isLoggedIn, isValidListId, (req, res) => {
     models.List.findById(req.params.listId)
     .then(list => {
         if (list == null || req.user.id != list.userId) {
@@ -100,7 +101,7 @@ router.post('/lists/:listId', isLoggedIn, (req, res) => {
 });
 
 // POST update Task
-router.post('/lists/:listId/task/:taskId', isLoggedIn, (req, res) => {
+router.post('/lists/:listId/task/:taskId', isLoggedIn, isValidListId, (req, res) => {
     models.List.findById(req.params.listId)
     .then(list => {
         if (list == null || req.user.id != list.userId) {
@@ -124,7 +125,7 @@ router.post('/lists/:listId/task/:taskId', isLoggedIn, (req, res) => {
 });
 
 // DELETE Task
-router.delete('/lists/:listId/task/:taskId', isLoggedIn, (req, res) => {
+router.delete('/lists/:listId/task/:taskId', isLoggedIn, isValidListId, (req, res) => {
     models.List.findById(req.params.listId)
     .then(list => {
         if (list == null || req.user.id != list.userId) {
@@ -138,7 +139,7 @@ router.delete('/lists/:listId/task/:taskId', isLoggedIn, (req, res) => {
 
 // POST search List
 // Returns matching Tasks
-router.post('/lists/:listId/search', isLoggedIn, (req, res) => {
+router.post('/lists/:listId/search', isLoggedIn, isValidListId, (req, res) => {
     models.List.findById(req.params.listId)
     .then(list => {
         if (list == null || req.user.id != list.userId) {
@@ -157,7 +158,7 @@ router.post('/lists/:listId/search', isLoggedIn, (req, res) => {
 // GET filter List
 // :filter can be 'done' or 'inprogress'
 // Returns matching Tasks
-router.get('/lists/:listId/:filter', isLoggedIn, (req, res) => {
+router.get('/lists/:listId/:filter', isLoggedIn, isValidListId, (req, res) => {
     if (['done','inprogress'].indexOf(req.params.filter) >= 0) {
         models.List.findById(req.params.listId)
         .then(list => {
@@ -189,6 +190,13 @@ function isLoggedIn(req, res, next) {
     if (req.isAuthenticated())
         return next();
     res.redirect('/');
+}
+
+function isValidListId(req, res, next) {
+    let listId = req.body.listId || req.params.listId;
+    if (uuidregex.test(listId))
+        return next();
+    return res.json({'message':'list not found'});
 }
 
 module.exports = router;

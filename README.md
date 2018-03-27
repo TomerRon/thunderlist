@@ -28,12 +28,13 @@ npm install
 Create a file called `.env` in the root folder and set your environment variables:
 
 ```
-
 $ touch .env
 
 # .env file in development:
 DB_DEVELOPMENT_USERNAME=your-db-username
+DB_DEVELOPMENT_PASSWORD=your-db-password
 DB_DEVELOPMENT_DBNAME=your-db-name
+DB_DEVELOPMENT_HOST=your-db-host
 PASSPORT_SESSION_SECRET=your-super-secret
 
 # .env file in production:
@@ -45,6 +46,12 @@ PASSPORT_SESSION_SECRET=your-super-secret
 ```
 
 Make sure you enter correct database information. If you are having trouble, check the `/config/db.js` file.
+
+Finally, run the database migrations:
+
+```
+node_modules/.bin/sequelize db:migrate
+```
 
 ### Running the tests
 
@@ -63,7 +70,7 @@ npm start
 * [Node.js](https://nodejs.org)
 * [Express](https://expressjs.com/)
 * [EJS](http://ejs.co/) view engine
-* [Sequelize](https://github.com/sequelize/sequelize) + [Sequelize CLI](https://github.com/sequelize/cli) + MySQL
+* [Sequelize](https://github.com/sequelize/sequelize) + [Sequelize CLI](https://github.com/sequelize/cli) + PostgreSQL
 * [Passport](http://www.passportjs.org/) authentication
 * [Mocha](https://mochajs.org/) / [Chai](http://www.chaijs.com/) tests
 * [jQuery](https://jquery.com/)

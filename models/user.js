@@ -7,6 +7,10 @@ module.exports = (sequelize, DataTypes) => {
     password: DataTypes.STRING,
   });
   
+  User.associate = function(models) {
+    User.hasMany(models.List, {foreignKey: 'userId', onDelete: 'CASCADE'});
+  }
+  
   User.generateHash = function generateHash(password) {
     return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
   }

@@ -8,7 +8,8 @@ module.exports = {
           references: {
             model: 'Lists',
             key: 'id'
-          }
+          },
+          onDelete: 'cascade'
         }
     );
   },

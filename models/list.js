@@ -10,7 +10,8 @@ module.exports = (sequelize, DataTypes) => {
   });
   
   List.associate = function(models) {
-    List.belongsTo(models.User, {foreignKey: 'userId', onDelete: 'CASCADE'});
+    List.hasMany(models.Task, {foreignKey: 'listId', onDelete: 'CASCADE'});
+    List.belongsTo(models.User, {foreignKey: 'userId'});
   }
   
   return List;
