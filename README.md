@@ -1,6 +1,6 @@
 # Thunderlist
 
-Thunderlist is a lightweight Node.js web app for creating and maintaining notes, built with Express and EJS.
+Thunderlist is a lightweight Node.js web app for creating and maintaining lists, built with Express and EJS.
 
 Live demo: https://thunderlist.herokuapp.com
 
@@ -88,11 +88,11 @@ npm start
 ├── views           # EJS view files
 ├── .env            # environment variables
 ├── .sequelizerc
+├── LICENSE.md
+├── README.md
 ├── api.js          # Thunderlist API
 ├── app.js          # app entry point
-├── LICENSE.md
 ├── package.json
-├── README.md
 └── routes.js       # web router
 ```
 
